@@ -31,6 +31,12 @@ public class IntegerReversal {
         System.out.println(integer);
     }
 
+    /**
+     * 解题思路
+     * 如果这里是123为例，分别对123求余和整除。123 % 10 = 3， 123 / 10 = 12。
+     * 溢出可以通过try catch方式处理，或者return 0。
+     * @return
+     */
     public static Integer otherDemo() {
         //用long类型判断溢出
         long rs = 0;
