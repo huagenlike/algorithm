@@ -24,6 +24,7 @@ package com.mzl.easy;
  */
 public class IntegerReversal {
 
+    //假定输入是32位的整数，则反转1000000003溢出
     private static int num = 1000000003;
 
     public static void main(String[] args) {
