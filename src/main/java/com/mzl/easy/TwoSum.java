@@ -22,8 +22,8 @@ public class TwoSum {
     public static void main(String[] args) {
         int[] ints = myDemo();
         System.out.println(JSONArray.toJSON(ints));
-        int[] ints1 = otherDemo();
-        System.out.println(JSONArray.toJSON(ints1));
+//        int[] ints1 = otherDemo();
+//        System.out.println(JSONArray.toJSON(ints1));
 
     }
 
