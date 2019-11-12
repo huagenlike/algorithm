@@ -34,8 +34,14 @@ public class IsPalindrome {
 //        boolean b = myDemo(121);
 //        System.out.println(b);
 
-        boolean b1 = myDemo1(-121);
+//        boolean b1 = myDemo1(-121);
+//        System.out.println(b1);
+
+        boolean b1 = myDemo2(123454321);
         System.out.println(b1);
+
+//        boolean b1 = otherDemo1(123454321);
+//        System.out.println(b1);
     }
 
     /**
@@ -69,18 +75,72 @@ public class IsPalindrome {
     }
 
     /**
+     * 思路等同于otherDemo
+     * @param num
+     * @return
+     */
+    private static boolean myDemo2(int num) {
+        if(num < 0){
+            return false;
+        }
+
+        String str = String.valueOf(num);
+        int start = 0;
+        int end = str.length() - 1;
+
+        while (start < end){
+            if(str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+    /**
+     *
+     * @param x
+     * @return
+     */
+    public static boolean otherDemo (int x) {
+
+        //边界判断，负数肯定不是回文数
+        if (x < 0) return false;
+
+        //判断整数位数
+        int div = 1;
+
+        while (x / div >= 10) div *= 10;
+        while (x > 0){
+            int left = x / div; //算出左第一个数
+            int right = x % 10; //算出右第一个数
+
+            if(left != right) return false;
+
+            //因为左边第一个数和右边第一个数已对比完，所起去掉，获取中间的数
+            x = x % div / 10;
+            //因为移除了前后两个数，所以div除100
+            div /= 100;
+        }
+        return true;
+    }
+
+    /**
      * 按照第二个想法，为了避免数字反转可能导致的溢出问题，为什么不考虑只反转 int 数字的一半？毕竟，如果该数字是回文，其后半部分反转后应该与原始数字的前半部分相同。
      * 例如，输入 1221，我们可以将数字 “1221” 的后半部分从 “21” 反转为 “12”，并将其与前半部分 “12” 进行比较，因为二者相同，我们得知数字 1221 是回文。
      * 让我们看看如何将这个想法转化为一个算法。
      *
-     * @param num
+     * @param x
      * @return
      */
-    private static boolean otherDemo (int num) {
-        if (num < 0) {
-            return false;
+    private static boolean otherDemo1 (int x) {
+        //思考：这里大家可以思考一下，为什么末尾为 0 就可以直接返回 false
+        if (x < 0 || (x % 10 == 0 && x != 0)) return false;
+        int revertedNumber = 0;
+        while (x > revertedNumber) {
+            revertedNumber = revertedNumber * 10 + x % 10;
+            x /= 10;
         }
-
-        return false;
+        return x == revertedNumber || x == revertedNumber / 10;
     }
 }
