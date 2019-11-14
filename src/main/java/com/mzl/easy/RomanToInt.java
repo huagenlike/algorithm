@@ -34,8 +34,9 @@ public class RomanToInt {
     public static void main(String[] args) {
 
         long startTime = new Date().getTime();
-        //int x = myDemo("MCDIIIV");
-        int x = myDemo1("MCDIIIV");
+        int x = myDemo("MCDIIIV");
+//        int x = myDemo("XVIII");
+//        int x = myDemo1("XIX");
         System.out.println(x);
         long endTime = new Date().getTime();
 
@@ -70,6 +71,7 @@ public class RomanToInt {
         int len = str.length();
 
         for(int i = 0; i < len;){
+            //i + 1 < len 的作用是，如果最后是一位，str.substring(i, i + 2)中的 i+2 就会越界
             if(i + 1 < len && map.containsKey(str.substring(i, i + 2))){
                 rs += map.get(str.substring(i, i + 2));
                 i += 2;

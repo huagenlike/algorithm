@@ -55,11 +55,11 @@ public class IntegerReversal {
                 //取绝对值
                 num = Math.abs(num);
             }
-            String s = Integer.valueOf(num).toString();
+            String s = String.valueOf(num);
 
             //通过StringBuilder的reverse()方法取反，如果是负数，则调用insert()在最前面插入-
             String data = isTrue == true ? new StringBuilder(s).reverse().insert(0, "-").toString() : new StringBuilder(s).reverse().toString() ;
-            integer = Integer.valueOf(data);
+            integer = Long.valueOf(data);
         }catch (Exception e){
             e.printStackTrace();
         }
